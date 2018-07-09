@@ -1,19 +1,16 @@
-import * as React from 'preact';
+import React from 'preact';
 import { render } from 'preact';
 
 import './App.css';
+import BirdLogo from '~/static/bird-logo.svg';
 
 const App = (): JSX.Element => (
   <div className="container">
     <p>Hello Typescript, Preact and Parcel!🍺😻</p>
+    <img src={BirdLogo} alt="logo" />
   </div>
 );
 
 const root = document.querySelector('#App') as Element;
-const rootLastChild = root.lastChild ? root.lastChild : undefined;
-
-if (rootLastChild !== undefined) {
-  render(<App />, root, rootLastChild as Element);
-} else {
-  render(<App />, root);
-}
+root.lastChild ? render(<App />, root, root.lastChild as Element) 
+               : render(<App />, root);
